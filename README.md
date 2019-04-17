@@ -1,2 +1,2 @@
-# Is it released?
-All information about upcoming video games
+# Game console museum
+All information about game consoles
