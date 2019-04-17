@@ -1,0 +1,7 @@
+.error {
+    color: config('colors.red-dark');
+
+    @screen md {
+        color: white;
+    }
+}

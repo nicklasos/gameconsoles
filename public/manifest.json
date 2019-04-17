@@ -1,0 +1,27 @@
+{
+    "name": "Is it released?",
+    "short_name": "isitreleased",
+    "description": "All about upcoming video games.",
+    "dir": "ltr",
+    "lang": "en",
+    "theme_color": "#FFFFFF",
+    "background_color": "#3490DC",
+    "display": "standalone",
+    "orientation": "natural",
+    "start_url": "/",
+    "categories": [
+        "games"
+    ],
+    "icons": [
+        {
+            "src": "/img/icons-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/icons-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

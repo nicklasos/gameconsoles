@@ -1,0 +1,11 @@
+@import 'variables';
+
+@tailwind preflight;
+@tailwind components;
+
+@import 'test';
+@import 'img';
+@import 'text';
+
+@tailwind utilities;
+

@@ -1,0 +1,1 @@
+php vendor/bin/dep deploy ${1:-production}

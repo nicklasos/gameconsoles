@@ -1,0 +1,8 @@
+img.lazyloaded {
+    opacity: 1;
+    transition: opacity 200ms ease;
+}
+
+img {
+    opacity: 0;
+}
