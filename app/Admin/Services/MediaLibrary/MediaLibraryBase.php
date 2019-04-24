@@ -2,9 +2,12 @@
 
 namespace App\Admin\Services\MediaLibrary;
 
+use Encore\Admin\Form\NestedForm;
+use Spatie\MediaLibrary\Models\Media;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use URL;
 
-trait MediaLibrary
+trait MediaLibraryBase
 {
     private $responsive = false;
 
@@ -15,12 +18,51 @@ trait MediaLibrary
         return $this;
     }
 
+    public function uploadMedia(UploadedFile $file = null)
+    {
+        $media = $this->form
+            ->model()
+            ->addMedia($file)
+            ->preservingOriginal();
+
+        if ($this->responsive) {
+            $media->withResponsiveImages();
+        }
+
+        $media = $media
+            ->toMediaCollection($this->column())
+            ->toArray();
+
+        $media[NestedForm::REMOVE_FLAG_NAME] = 0;
+
+        return tap($media, function () {
+            $this->name = null;
+        });
+    }
+
     public function objectUrl($mediaId)
     {
         return URL::route('admin.media.download', $mediaId);
     }
 
-    public function getMimeType(string $mime): string
+    private function getPreviewEntry(Media $media)
+    {
+        $type = $this->getMimeType($media->mime_type);
+
+        $entry = [
+            'caption' => $media->file_name,
+            'key' => $media->id,
+            'size' => $media->size,
+        ];
+
+        if (!empty($type)) {
+            $entry['type'] = $type;
+        }
+
+        return $entry;
+    }
+
+    private function getMimeType(string $mime): string
     {
         switch ($mime) {
             case 'image/jpeg':

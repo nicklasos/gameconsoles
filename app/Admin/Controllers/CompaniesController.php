@@ -120,7 +120,10 @@ class CompaniesController extends Controller
 
         $form->text('name', 'Name');
         $form->image('image', 'Image')->removable();
-        // $form->mediaLibrary('images', 'Images');
+
+        $form->mediaLibrary('images', 'Images')
+            ->responsive()
+            ->removable();
 
         $form->multipleMediaLibrary('photos', 'Photos', ['responsiveImages' => true])
             ->responsive()

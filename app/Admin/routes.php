@@ -1,6 +1,5 @@
 <?php
 
-use App\Admin\Services\MediaLibrary\MediaLibraryServiceProvider;
 use Illuminate\Routing\Router;
 
 Admin::registerAuthRoutes();
@@ -16,5 +15,3 @@ Route::group([
     $router->resource('companies', 'CompaniesController');
 
 });
-
-MediaLibraryServiceProvider::register();

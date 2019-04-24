@@ -40,4 +40,9 @@ class Company extends Model implements HasMedia
     {
 
     }
+
+    public function setImagesAttribute()
+    {
+
+    }
 }

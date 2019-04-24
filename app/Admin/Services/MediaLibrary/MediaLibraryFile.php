@@ -3,13 +3,12 @@
 namespace App\Admin\Services\MediaLibrary;
 
 use Encore\Admin\Form\Field\File;
-use Encore\Admin\Form\NestedForm;
 use Spatie\MediaLibrary\Models\Media;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MediaLibraryFile extends File
 {
-    use MediaLibrary;
+    use MediaLibraryBase;
 
     protected $view = 'admin::form.file';
 
@@ -17,9 +16,10 @@ class MediaLibraryFile extends File
     {
         parent::fill($data);
 
-        $this->value = $this->form->model()->getMedia($this->column());
-        if ($this->value->count()) {
-            $this->value = $this->value[0]->id;
+        $value = $this->form->model()->getMedia($this->column());
+
+        if ($value->count()) {
+            $this->value = $value->first()->id;
         } else {
             $this->value = [];
         }
@@ -40,52 +40,16 @@ class MediaLibraryFile extends File
 
         $this->form->model()->clearMediaCollection($this->column());
 
-        $media = $this->form
-            ->model()
-            ->addMedia($file)
-            ->withResponsiveImages()
-            ->toMediaCollection($this->column())
-            ->toArray();
-
-        $media[NestedForm::REMOVE_FLAG_NAME] = 0;
-
-        return tap($media, function () {
-            $this->name = null;
-        });
+        return $this->uploadMedia($file);
     }
 
     protected function initialPreviewConfig()
     {
-        $file = $this->value;
+        $media = Media::where('id', '=', $this->value)->first();
 
-        $config = [];
-
-        $media = Media::where('id', '=', $file)->first();
-
-        $type = $this->getMimeType($media->mime_type);
-
-        $entry = [
-            'caption' => $media->file_name,
-            'key'     => $media->id,
-            'size'    => $media->size
-        ];
-
-        if (!empty($type)) {
-            $entry['type'] = $type;
-        }
-
-        $config[] = $entry;
-
-        return $config;
+        return [$this->getPreviewEntry($media)];
     }
 
-    /**
-     * Set original value to the field.
-     *
-     * @param array $data
-     *
-     * @return void
-     */
     public function setOriginal($data)
     {
         $value = $this->form->model()->getMedia($this->column);
