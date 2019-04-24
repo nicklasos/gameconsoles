@@ -20,4 +20,9 @@
 
     <p>{{ mt_rand() }}</p>
 
+
+    <p style="margin-top: 300px">
+        {{ $company->getFirstMedia('photos') }}
+    </p>
+
 @endsection

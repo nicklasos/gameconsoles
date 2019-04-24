@@ -61,7 +61,7 @@ task('deploy', [
 
 // Configuration
 
-set('repository', 'git@github.com:nicklasos/game-releases.git');
+set('repository', 'git@github.com:nicklasos/gameconsoles.git');
 set('git_tty', true); // [Optional] Allocate tty for git on first deployment
 add('shared_files', []);
 add('shared_dirs', ['storage']);
@@ -75,7 +75,7 @@ host('167.99.4.99')
     ->stage('production')
     ->set('branch', 'master')
     ->identityFile('~/.ssh/id_rsa')
-    ->set('deploy_path', '/var/www/isitreleased');
+    ->set('deploy_path', '/var/www/gameconsoles');
 
 // Tasks
 desc('Restart PHP-FPM service');

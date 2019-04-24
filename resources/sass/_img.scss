@@ -3,6 +3,6 @@ img.lazyloaded {
     transition: opacity 200ms ease;
 }
 
-img {
+img.lazyload {
     opacity: 0;
 }

@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+
 class TestController extends Controller
 {
     public function index()
     {
-    }
+        $company = Company::find(1);
 
-    public function imgPng()
-    {
-        // sleep(1);
-        return file_get_contents(public_path('img/bowser-2.png'));
-    }
+        // $company
+        //     ->addMedia(base_path('stuff/sony-logo.jpg'))
+        //     ->toMediaCollection('images');
 
-    public function imgJpg()
-    {
-        sleep(1);
-        return file_get_contents(public_path('img/bowser-1.jpg'));
+        dd($company->getMedia('images')[0]->getUrl());
     }
 }
