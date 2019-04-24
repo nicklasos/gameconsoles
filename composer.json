@@ -14,7 +14,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "nicklasos/laravel-admin-media-library": "dev-master",
+        "nicklasos/laravel-admin-media-library": "^0.0.1",
         "spatie/laravel-medialibrary": "^7.0.0"
     },
     "require-dev": {
@@ -69,11 +69,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "app/Admin/Extensions/nicklasos/laravel-admin-media-library"
-        }
-    ]
+    }
 }
