@@ -140,7 +140,7 @@ class GamesController extends Controller
             $form->text('Developer');
         });
 
-        $form->date('released_at', 'Released at')->default(date('Y-m-d'));
+        $form->date('released_at', 'Released at');
 
         return $form;
     }

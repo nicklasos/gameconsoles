@@ -144,8 +144,8 @@ class ConsolesController extends Controller
             ->responsive()
             ->removable();
 
-        $form->date('released_at', 'Released at')->default(date('Y-m-d'));
-        $form->date('unreleased_at', 'Unreleased at')->default(date('Y-m-d'));
+        $form->date('released_at', 'Released at');
+        $form->date('unreleased_at', 'Unreleased at');
 
         return $form;
     }
