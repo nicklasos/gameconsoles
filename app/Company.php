@@ -28,6 +28,11 @@ use Spatie\MediaLibrary\Models\Media;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $description
+ * @property-write mixed $images
+ * @property-write mixed $logo
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereDescription($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Console[] $consoles
  */
 class Company extends Model implements HasMedia
 {
@@ -35,11 +40,10 @@ class Company extends Model implements HasMedia
     use LogoAttribute;
     use ImagesAttribute;
 
-    public $photos;
-
-    protected $fillable = [
-        'name',
-    ];
+    public function consoles()
+    {
+        return $this->hasMany(Console::class);
+    }
 
     public function registerMediaConversions(Media $media = null)
     {

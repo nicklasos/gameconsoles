@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Override laravel-admin views
+        $this->loadViewsFrom(resource_path('views/admin'), 'admin');
+
         if ($this->app->environment() !== 'production') {
             $this->app->register(IdeHelperServiceProvider::class);
         }

@@ -13,5 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->resource('companies', 'CompaniesController');
+    $router->resource('consoles', 'ConsolesController');
+    $router->resource('games', 'GamesController');
 
 });
