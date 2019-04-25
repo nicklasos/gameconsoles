@@ -18,7 +18,8 @@ class CreateTableCompanies extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
-            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->text('information')->nullable();
 
             Migrations::timestamps($table);
         });

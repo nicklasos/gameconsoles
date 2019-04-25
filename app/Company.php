@@ -2,9 +2,12 @@
 
 namespace App;
 
+use App\Services\Media\ImagesAttribute;
+use App\Services\Media\LogoAttribute;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 /**
  * App\Company
@@ -29,6 +32,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 class Company extends Model implements HasMedia
 {
     use HasMediaTrait;
+    use LogoAttribute;
+    use ImagesAttribute;
 
     public $photos;
 
@@ -36,13 +41,11 @@ class Company extends Model implements HasMedia
         'name',
     ];
 
-    public function setPhotosAttribute()
+    public function registerMediaConversions(Media $media = null)
     {
-
-    }
-
-    public function setImagesAttribute()
-    {
-
+        $this->addMediaConversion('thumb')
+            ->width(140)
+            ->sharpen(3)
+            ->performOnCollections('logo', 'images');
     }
 }

@@ -83,7 +83,7 @@ class CompaniesController extends Controller
 
         $grid->id('Id');
         $grid->name('Name');
-        $grid->image('Image');
+        $grid->text('Description');
         $grid->updated_at('Updated at');
         $grid->created_at('Created at');
 
@@ -102,7 +102,7 @@ class CompaniesController extends Controller
 
         $show->id('Id');
         $show->name('Name');
-        $show->image('Image');
+        $show->text('Description');
         $show->updated_at('Updated at');
         $show->created_at('Created at');
 
@@ -118,14 +118,14 @@ class CompaniesController extends Controller
     {
         $form = new Form(new Company);
 
-        $form->text('name', 'Name');
-        $form->image('image', 'Image')->removable();
+        $form->text('name');
+        $form->textarea('description');
 
-        $form->mediaLibrary('images', 'Images')
+        $form->mediaLibrary('logo')
             ->responsive()
             ->removable();
 
-        $form->multipleMediaLibrary('photos', 'Photos', ['responsiveImages' => true])
+        $form->multipleMediaLibrary('images')
             ->responsive()
             ->removable();
 
