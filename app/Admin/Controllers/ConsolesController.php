@@ -132,6 +132,11 @@ class ConsolesController extends Controller
             ->options(Company::all()->pluck('name', 'id'))
             ->required();
 
+        $parents = Console::all()->pluck('name', 'id')->prepend('Root', null);
+
+        $form->select('parent_id', 'Parent')
+            ->options($parents);
+
         $form->text('name', 'Name');
         $form->textarea('description', 'Description');
         $form->textarea('information', 'Information');
