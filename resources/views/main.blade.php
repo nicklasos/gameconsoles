@@ -13,7 +13,10 @@
     @foreach ($consoles as $console)
         <h3>{{ $console->company->name }} {{ $console->name }}</h3>
         <div>
-            @include('img', ['src' => $console->getFirstMediaUrl('logo', 'thumb')])
+            @include('img', [
+                'src' => $console->getFirstMediaUrl('logo', 'thumb'),
+                'alt' => $console->name,
+            ])
         </div>
 
     @endforeach
