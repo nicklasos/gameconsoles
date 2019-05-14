@@ -20,7 +20,6 @@
         "vue-template-compiler": "^2.6.8"
     },
     "dependencies": {
-        "lodash": "^4.17.11",
-        "tailwindcss": "next"
+        "tailwindcss": "^1.0.1"
     }
 }

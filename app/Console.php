@@ -45,6 +45,12 @@ class Console extends Model implements HasMedia
     use LogoAttribute;
     use ImagesAttribute;
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'released_at',
+    ];
+
     public function company()
     {
         return $this->belongsTo(Company::class);
