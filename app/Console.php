@@ -38,6 +38,11 @@ use Spatie\MediaLibrary\Models\Media;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Console whereUnreleasedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Console whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $parent_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Game[] $games
+ * @property-read int|null $games_count
+ * @property-read int|null $media_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Console whereParentId($value)
  */
 class Console extends Model implements HasMedia
 {

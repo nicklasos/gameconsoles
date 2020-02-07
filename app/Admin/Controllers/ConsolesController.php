@@ -82,12 +82,12 @@ class ConsolesController extends Controller
     {
         $grid = new Grid(new Console);
 
-        $grid->id('Id');
-        $grid->company_id('Company id');
+        $grid->id('Id')->sortable();
+        $grid->company_id('Company id')->sortable();
         $grid->name('Name');
         $grid->description('Description');
         $grid->information('Information');
-        $grid->released_at('Released at');
+        $grid->released_at('Released at')->sortable();
         $grid->unreleased_at('Unreleased at');
         $grid->updated_at('Updated at');
         $grid->created_at('Created at');

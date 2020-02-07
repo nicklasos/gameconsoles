@@ -33,6 +33,10 @@ use Spatie\MediaLibrary\Models\Media;
  * @property-write mixed $logo
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereDescription($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Console[] $consoles
+ * @property string|null $information
+ * @property-read int|null $consoles_count
+ * @property-read int|null $media_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereInformation($value)
  */
 class Company extends Model implements HasMedia
 {

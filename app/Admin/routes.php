@@ -15,5 +15,6 @@ Route::group([
     $router->resource('companies', 'CompaniesController');
     $router->resource('consoles', 'ConsolesController');
     $router->resource('games', 'GamesController');
+    $router->resource('developers', 'DevelopersController');
 
 });

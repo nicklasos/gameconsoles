@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Console;
+use App\Developer;
 use App\Game;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -125,7 +126,12 @@ class GamesController extends Controller
 
         $form->multipleSelect('consoles')->options(Console::all()->pluck('name', 'id'));
 
-        $form->text('name', 'Name');
+        $developers = Developer::all()->pluck('name', 'id');
+
+        $form->select('developer_id', 'Developer')
+            ->options($developers);
+
+        $form->text('name', 'Name')->required();
         $form->textarea('description', 'Description');
 
         $form->mediaLibrary('logo')
@@ -135,10 +141,6 @@ class GamesController extends Controller
         $form->multipleMediaLibrary('images')
             ->responsive()
             ->removable();
-
-        $form->embeds('information', function ($form) {
-            $form->text('Developer');
-        });
 
         $form->date('released_at', 'Released at');
 

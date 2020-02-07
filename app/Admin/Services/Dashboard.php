@@ -4,6 +4,7 @@ namespace App\Admin\Services;
 
 use App\Company;
 use App\Console;
+use App\Developer;
 use App\Game;
 use Encore\Admin\Admin;
 
@@ -37,6 +38,7 @@ class Dashboard
             'Companies' => Company::count(),
             'Consoles' => Console::count(),
             'Games' => Game::count(),
+            'Developers' => Developer::count(),
         ];
 
         $title = 'Stats';
