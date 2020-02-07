@@ -71,7 +71,7 @@ set('keep_releases', 20);
 
 // Hosts
 
-host('167.99.4.99')
+host('142.93.198.25')
     ->stage('production')
     ->set('branch', 'master')
     ->identityFile('~/.ssh/id_rsa')
