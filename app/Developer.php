@@ -39,6 +39,17 @@ class Developer extends Model implements HasMedia
     use HasMediaTrait;
     use LogoAttribute;
 
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('logo')
+            ->useDisk('media');
+
+        $this
+            ->addMediaCollection('images')
+            ->useDisk('media');
+    }
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')

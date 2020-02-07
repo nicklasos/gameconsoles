@@ -66,6 +66,17 @@ class Console extends Model implements HasMedia
         return $this->belongsToMany(Game::class);
     }
 
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('logo')
+            ->useDisk('media');
+
+        $this
+            ->addMediaCollection('images')
+            ->useDisk('media');
+    }
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')

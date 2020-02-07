@@ -56,8 +56,12 @@ return [
         ],
 
         'media' => [
+            // 'driver' => 'local',
+            // 'root'   => public_path('media'),
             'driver' => 'local',
-            'root'   => public_path('media'),
+            'root' => storage_path('app/public/media'),
+            'url' => env('APP_URL').'/storage/media',
+            'visibility' => 'public',
         ],
 
         's3' => [

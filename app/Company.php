@@ -49,6 +49,17 @@ class Company extends Model implements HasMedia
         return $this->hasMany(Console::class);
     }
 
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('logo')
+            ->useDisk('media');
+
+        $this
+            ->addMediaCollection('images')
+            ->useDisk('media');
+    }
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
