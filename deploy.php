@@ -56,7 +56,7 @@ task('deploy', [
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
-    'artisan:queue:restart',
+    // 'artisan:queue:restart',
 ]);
 
 // Configuration
