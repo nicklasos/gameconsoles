@@ -10,5 +10,5 @@
     @if (isset($h))
     height='{{ $h }}'
     @endif
-    class='lazyload'
+    class='lazyload {{ $class }}'
 >

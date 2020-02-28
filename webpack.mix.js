@@ -10,7 +10,7 @@ mix.js('resources/js/app.js', 'public/js').
     sass('resources/sass/app.scss', 'public/css').
     options({
         processCssUrls: false,
-        postCss: [tailwindcss('./tailwind.js')],
+        postCss: [tailwindcss('./tailwind.config.js')],
     });
 
 if (mix.inProduction()) {
@@ -21,17 +21,6 @@ if (mix.inProduction()) {
                     path.join(__dirname, 'resources/views/**/*.blade.php'),
                     path.join(__dirname, 'resources/js/**/*.js'),
                 ]),
-                extractors: [
-                    {
-                        extractor: class {
-                            static extract(content) {
-                                return content.match(/[A-Za-z0-9-_:\/]+/g) ||
-                                    [];
-                            }
-                        },
-                        extensions: ['js', 'php'],
-                    },
-                ],
             }),
         ],
     });

@@ -11,9 +11,9 @@
     <link href="/css/app.css?v={{ assets_v() }}" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
 </head>
-<body class="font-sans font-normal leading-normal">
+<body class="font-sans font-normal leading-normal antialiased  bg-gray-200">
 
-<div class="container mx-auto">
+<div class="container mx-auto px-8">
     @yield('content')
 </div>
 
