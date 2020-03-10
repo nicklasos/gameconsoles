@@ -39,21 +39,7 @@
                     </div>
 
                     <div class="ml-10">
-                        <div class="flex">
-                            @foreach($console->children as $children)
-                                <div class="mr-4">
-                                    <div class="pl-1 text-sm text-gray-700 truncate w-16">{{ $children->name }}</div>
-                                    @include('img', [
-                                        'src' => $children->getFirstMediaUrl('logo', 'thumb'),
-                                        'alt' => $children->name,
-                                        'class' => 'rounded-md mt-2 shadow-md'
-                                    ])
-                                    <div class="pl-1 text-xs text-gray-500 mt-1">{{ optional($children->released_at)->format('Y') }}</div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="mt-4">
+                        <div class="">
                             @foreach ($console->games as $game)
                                 <div>
                                     <div class="pl-1 text-sm text-gray-700">{{ $game->name }}</div>
@@ -68,6 +54,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="flex mt-8">
+                    @foreach($console->children as $children)
+                        <div class="mr-4">
+                            <div class="pl-1 text-sm text-gray-700">{{ $children->name }}</div>
+                            @include('img', [
+                                'src' => $children->getFirstMediaUrl('logo', 'thumb'),
+                                'alt' => $children->name,
+                                'class' => 'rounded-md mt-2 shadow-md'
+                            ])
+                            <div class="pl-1 text-xs text-gray-500 mt-1">{{ optional($children->released_at)->format('Y') }}</div>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         @endforeach
     </div>
