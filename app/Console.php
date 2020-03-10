@@ -89,7 +89,7 @@ class Console extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->width(140)
+            ->width(200)
             ->sharpen(3)
             ->performOnCollections('logo', 'images');
     }
