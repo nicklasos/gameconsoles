@@ -1,7 +1,13 @@
 let mix = require('laravel-mix');
 let tailwindcss = require('tailwindcss');
-let glob = require('glob-all');
-let PurgeCssPlugin = require('purgecss-webpack-plugin');
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+    content: [
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.js',
+    ],
+    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+});
 
 mix.disableNotifications();
 
@@ -10,18 +16,10 @@ mix.js('resources/js/app.js', 'public/js').
     sass('resources/sass/app.scss', 'public/css').
     options({
         processCssUrls: false,
-        postCss: [tailwindcss('./tailwind.config.js')],
-    });
-
-if (mix.inProduction()) {
-    mix.webpackConfig({
-        plugins: [
-            new PurgeCssPlugin({
-                paths: glob.sync([
-                    path.join(__dirname, 'resources/views/**/*.blade.php'),
-                    path.join(__dirname, 'resources/js/**/*.js'),
-                ]),
-            }),
+        postCss: [
+            tailwindcss('./tailwind.config.js'),
+            ...process.env.NODE_ENV === 'production'
+                ? [purgecss]
+                : [],
         ],
     });
-}
