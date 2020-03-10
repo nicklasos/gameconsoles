@@ -72,7 +72,7 @@ class Console extends Model implements HasMedia
 
     public function children()
     {
-        return $this->hasMany(Console::class, 'parent_id', 'id');
+        return $this->hasMany(Console::class, 'parent_id', 'id')->orderBy('released_at');
     }
 
     public function registerMediaCollections()

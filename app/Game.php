@@ -46,6 +46,12 @@ class Game extends Model implements HasMedia
     use LogoAttribute;
     use ImagesAttribute;
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'released_at',
+    ];
+
     protected $casts = [
         'information' => 'array',
     ];
