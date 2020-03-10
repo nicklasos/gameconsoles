@@ -8,7 +8,17 @@ class MainPageController extends Controller
 {
     public function index()
     {
-        $consoles = Console::with('company')
+        $consoles = Console::with(
+            [
+                'company',
+                'games',
+                'games.media',
+                'children',
+                'children.media',
+                'media',
+            ]
+        )
+            ->parent()
             ->orderByDesc('released_at')
             ->get();
 

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Services\Media\ImagesAttribute;
 use App\Services\Media\LogoAttribute;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -43,6 +44,9 @@ use Spatie\MediaLibrary\Models\Media;
  * @property-read int|null $games_count
  * @property-read int|null $media_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Console whereParentId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Console[] $children
+ * @property-read int|null $children_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Console parent()
  */
 class Console extends Model implements HasMedia
 {
@@ -66,6 +70,11 @@ class Console extends Model implements HasMedia
         return $this->belongsToMany(Game::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(Console::class, 'parent_id', 'id');
+    }
+
     public function registerMediaCollections()
     {
         $this
@@ -83,5 +92,10 @@ class Console extends Model implements HasMedia
             ->width(140)
             ->sharpen(3)
             ->performOnCollections('logo', 'images');
+    }
+
+    public function scopeParent(Builder $query)
+    {
+        $query->where('parent_id', 0);
     }
 }
