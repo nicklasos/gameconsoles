@@ -20,8 +20,7 @@
     <div class="mt-8">
         @foreach ($consoles as $console)
             <div class="mb-16">
-                <div
-                    class="pl-1 pb-2 text-gray-600 text-sm tracking-wide font-semibold uppercase">{{ $console->company->name }}</div>
+                <div class="pl-1 pb-2 text-gray-600 text-sm tracking-wide font-semibold uppercase">{{ $console->company->name }}</div>
                 <div class="flex">
                     <div class="max-w-md self-start rounded-lg overflow-hidden shadow-lg">
                         <div>
@@ -49,8 +48,7 @@
                                     'alt' => $game->name,
                                     'class' => 'rounded-md mt-2 shadow-md h-24'
                                 ])
-                                <div
-                                    class="pl-1 text-xs text-gray-500 mt-1">{{ optional($game->released_at)->format('Y') }}</div>
+                                <div class="pl-1 text-xs text-gray-500 mt-1">{{ optional($game->released_at)->format('Y') }}</div>
                             </div>
                         @endforeach
                     </div>
